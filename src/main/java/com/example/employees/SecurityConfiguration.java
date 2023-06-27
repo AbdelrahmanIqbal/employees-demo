@@ -14,6 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
+
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user = User.withDefaultPasswordEncoder()
@@ -29,8 +30,9 @@ public class SecurityConfiguration {
         http
                 .csrf((csrf) -> csrf.disable())
                 .authorizeRequests()
-                .requestMatchers("/employees/**").hasRole("USER")
-                .requestMatchers("/contacts/**").hasRole("ADMIN")
+//                .requestMatchers("/employees/create/**").hasRole("USER")
+//                .requestMatchers("/employees/**").hasRole("USER")
+//                .requestMatchers("/contacts/**").hasRole("ADMIN")
                 .requestMatchers("/**").permitAll();
         return http.build();
     }
